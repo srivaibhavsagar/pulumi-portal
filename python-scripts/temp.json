@@ -1,0 +1,22 @@
+{
+    "agent": {
+    "metrics_collection_interval": 10,
+    "logfile": "/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log"
+    },
+    "metrics": {
+    "namespace": "CWAgent/Silos/EC2",
+    "metrics_collected": {
+        "mem": {
+            "measurement": [
+                {"name": "used_percent", "rename": "Memory used percent", "unit": "Megabytes"}
+            ],
+            "metrics_collection_interval": 60
+        }
+    },
+    "append_dimensions": {
+        "InstanceId": "\${aws:InstanceId}"
+    },
+    "aggregation_dimensions" : [["ImageId"]],
+    "force_flush_interval" : 30
+    }
+}
